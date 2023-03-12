@@ -53,7 +53,7 @@ func main() {
 		log.Fatalf("Gateway initialization error: %s", err.Error())
 	}
 
-	/// Server Inir
+	/// Server Init
 	server := server.NewServer(cfg, gw)
 	if err = server.Run(); err != nil {
 		log.Fatal(err)
