@@ -1,0 +1,18 @@
+Port: "8082"
+
+server:
+  ReadTimeout: 60
+  AppName: "GraphQL Gateway"
+  ServerHeader: "GraphQL Gateway"
+  Prefork: true
+
+logger:
+  LogFile: "/tmp/api.log"
+  Timezone: "Africa/Nairobi"
+  LoggerMaxFileSize: 10
+  CompressLogFile: true
+  UseLocalTime: true
+
+GraphQLEndpoints:
+  - "http://localhost:4000/graphql"
+  - "http://localhost:4001/graphql"
