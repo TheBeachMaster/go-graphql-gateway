@@ -61,3 +61,5 @@ func main() {
 - Build the binary `make build` or `make build-mac` for Mac OS
 
  > Alternatively you can build a Docker image with the Dockerfile provided
+
+-  Health check endpoint `/ruok` 

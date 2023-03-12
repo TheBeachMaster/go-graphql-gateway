@@ -8,6 +8,7 @@ import (
 
 	"com.thebeachmaster/nautilusgw/config"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/nautilus/gateway"
 )
 
@@ -20,12 +21,19 @@ type Server struct {
 var Version = "1.0.0"
 
 func NewServer(cfg *config.Config, gw *gateway.Gateway) *Server {
-	return &Server{app: fiber.New(fiber.Config{
+	_app := fiber.New(fiber.Config{
 		Prefork:      cfg.Server.Prefork,
 		ReadTimeout:  time.Second * time.Duration(cfg.Server.ReadTimeout),
 		AppName:      cfg.Server.AppName + " Version: " + Version,
 		ServerHeader: cfg.Server.ServerHeader,
-	}), cfg: cfg, gateway: gw}
+	})
+
+	// You can add app-level middlewares here
+	_app.Use(recover.New(recover.Config{
+		EnableStackTrace: true,
+	}))
+
+	return &Server{app: _app, cfg: cfg, gateway: gw}
 }
 
 func (srv *Server) Run() error {
