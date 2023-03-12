@@ -6,7 +6,7 @@ Uses [Nautilus](https://github.com/nautilus/gateway) and [Fiber](https://github.
 
 ## TLDR;
 
-If you're just looking for a quick and dirty implementation of a federated gateway, paste this code into you `main.go` file, package and ship.
+If you're just looking for a quick and dirty implementation of a federated gateway, paste this code into your `main.go` file, package and ship.
 
 ```go 
 package main
